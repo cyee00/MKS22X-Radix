@@ -1,6 +1,41 @@
 public class MyLinkedList<E>{
   private int length=0;
   private Node start,end;
+  public class Node{
+  private E data;
+  private Node next,prev;
+  public Node(E d){
+    data=d;
+  }
+  public Node(E d,Node n, Node p){
+    data=d;
+    next=n;
+    prev=p;
+  }
+  public Node next(){
+    return next;
+  }
+  public Node prev(){
+    return prev;
+  }
+  public void setNext(Node other){
+    next=other;
+  }
+  public void setPrev(Node other){
+    prev=other;
+  }
+  public E getData(){
+    return data;
+  }
+  public E setData(E i){
+    E ans=data;
+    data=i;
+    return ans;
+  }
+  public String toString(){
+    return ""+data;//toString should not show anything except for the data
+  }
+  }
 
   public MyLinkedList(){
     start=new Node(null,null,null);
