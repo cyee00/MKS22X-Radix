@@ -44,7 +44,7 @@ public class MyLinkedList<E>{
     start.setNext(end);
   }
 
-  public boolean add(Integer value){
+  public boolean add(E value){
     if (length==0){//if it's empty, just change start
       start=new Node(value,end,null);
       length++;
@@ -82,7 +82,7 @@ public class MyLinkedList<E>{
     return ans+"]";//if list is empty, do this
   }
 
-  private Integer get(int index){
+  private E get(int index){
     int i=0;
     Node current=start;
     if (index<0||index>=length){
@@ -96,13 +96,13 @@ public class MyLinkedList<E>{
     }
   }
 
-  private Integer set(int index,Integer value){
+  private E set(int index,E value){
     int i=0;
     Node current=start;
     if (index<0||index>=length){
       throw new IndexOutOfBoundsException();//throwing exception if index out of bounds
     }else{
-      Integer ans=get(index);//storing the return value since the node will be replaced
+      E ans=get(index);//storing the return value since the node will be replaced
       while (i<index){//loop through the list until you reach node that will be replaced
         current=current.next();
         i++;
@@ -120,7 +120,7 @@ public class MyLinkedList<E>{
     }
   }
 
-  public boolean contains(Integer value){
+  public boolean contains(E value){
     int i=0;
     Node current=start;
     while (i<length){
@@ -133,7 +133,7 @@ public class MyLinkedList<E>{
     return false;//if the desired value not found, return false
   }
 
-  public int indexOf(Integer value){
+  public int indexOf(E value){
     int ans=0;
     int i=0;
     Node current=start;
@@ -147,7 +147,7 @@ public class MyLinkedList<E>{
     return -1;//return -1 if desired value not found
   }
 
-  private void add(int index,Integer value){
+  private void add(int index,E value){
     int i=0;
     Node current=start;
     if (index==length){
@@ -169,11 +169,11 @@ public class MyLinkedList<E>{
       newNode.setNext(current);
     }
   }
-  private Integer remove(int index){
+  private E remove(int index){
     if (index<0||index>=length){
       throw new IndexOutOfBoundsException();//stop the function if index out of bounds
     }else{
-      Integer ans=get(index);//storing the return value
+      E ans=get(index);//storing the return value
       if (length==1){//if there's only one element, it becomes an empty list
         start=new Node(null,null,null);
         end=new Node(null,null,start);
@@ -207,7 +207,7 @@ public class MyLinkedList<E>{
     }
   }
 
-  private boolean remove(Integer value){
+  private boolean remove(E value){
     if (contains(value)){//checking to see if the desired value exists
       remove(indexOf(value));//remove if it does
       return true;
@@ -221,7 +221,7 @@ public class MyLinkedList<E>{
   private Node getEnd(){
     return end;
   }
-  public void extend(MyLinkedList other){
+  public void extend(MyLinkedList<E> other){
     end.setNext(other.getStart());//link end of this to start of other
     other.getEnd().setPrev(end);//link start of other to end of this
     length+=other.size();
